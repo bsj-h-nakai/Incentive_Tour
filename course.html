@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モデルコース</title>
+  <style>
+    /* モバイルファースト */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .start-label {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .day-box {
+      background-color: #1e88e5;
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 16px;
+      position: relative;
+    }
+    .day-box::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px 8px 0 8px;
+      border-style: solid;
+      border-color: #1e88e5 transparent transparent transparent;
+    }
+    .course-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+    .course-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .card-content {
+      padding: 12px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .card-header .icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .card-header .time-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1e88e5;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body .title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .card-body .text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .card-body .media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+    .separator {
+      text-align: center;
+      color: #ccc;
+      margin: 8px 0;
+      font-size: 24px;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="start-label">\ START /</div>
+    <div class="day-box">1日目</div>
+    <div class="course-title">初日はワイキキでのんびり</div>
+    <div class="course-desc">ホテルのチェックインは15時ごろが一般的。午前中に到着する便を利用の場合は、ホテルに荷物を預けてレストランで食事やスパでリフレッシュ。夜は早めに休んで明日に備えましょう。</div>
+    <!-- AM Card -->
+    <div class="card">
+      <div class="card-content">
+        <div class="card-header">
+          <img class="icon" src="time.png" alt="時間">
+          <div class="time-label">AM</div>
+        </div>
+        <div class="card-body">
+          <div class="title">ダニエル・K・イノウエ国際空港からワイキキへ</div>
+          <div class="text">ダニエル・K・イノウエ国際空港に到着。海を見ながらブランチを楽しみ、ワイキキの海沿いでリラックスしましょう。</div>
+          <div class="media"><img src="sea.png" alt="ワイキキビーチ"></div>
+        </div>
+      </div>
+    </div>
+    <div class="separator">⋮</div>
+    <!-- PM Card -->
+    <div class="card">
+      <div class="card-content">
+        <div class="card-header">
+          <img class="icon" src="time.png" alt="時間">
+          <div class="time-label">13:00</div>
+        </div>
+        <div class="card-body">
+          <div class="title">スパでマッサージ</div>
+          <div class="text">チェックイン前にスパでマッサージを受け、長時間のフライトの疲れを癒しましょう。</div>
+          <div class="media"><img src="spa.png" alt="スパ"></div>
+        </div>
+      </div>
+    </div>
+    <div class="separator">⋮</div>
+    <div class="card">
+        <div class="card-content">
+          <div class="card-header">
+            <img class="icon" src="time.png" alt="時間">
+            <div class="time-label">19:00</div>
+          </div>
+          <div class="card-body">
+            <div class="title">ディナー</div>
+            <div class="text">ディナーの説明文が入ります</div>
+            <div class="media"><img src="dinner.png" alt="スパ"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
