@@ -1,0 +1,199 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タイムライン</title>
+  <style>
+    /* モバイルファースト */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #e6ecf0;
+      color: #14171a;
+      position: relative;
+      min-height: 100vh;
+    }
+    .header {
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #e1e8ed;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .icon {
+      cursor: pointer;
+    }
+    .icon.profile {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+    .icon.profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .logo {
+      flex: 1;
+      text-align: center;
+    }
+    .logo img {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+    }
+    .container {
+      padding: 16px 10px;
+      padding-bottom: 80px; /* FAB分の余白 */
+    }
+    .post-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .post-item {
+      background-color: #fff;
+      border-bottom: 1px solid #e1e8ed;
+      display: flex;
+      padding: 10px 16px;
+    }
+    .post-item .avatar {
+      flex-shrink: 0;
+      margin-right: 10px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .post-item .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .post-item .content {
+      flex: 1;
+    }
+    .post-item .meta {
+      font-size: 14px;
+      color: #657786;
+      margin-bottom: 5px;
+    }
+    .post-item .text {
+      font-size: 15px;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    .post-item .media {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+    .post-item .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background-color: #1da1f2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 10;
+    }
+    .fab img {
+      width: 24px;
+      height: 24px;
+    }
+    @media (min-width: 600px) {
+      .container { max-width: 600px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="icon profile">
+      <img src="./a.png" alt="プロフィール">
+    </div>
+    <div class="logo">
+     タイムライン
+    </div>
+  </div>
+  <div class="container">
+    <ul id="postList" class="post-list"></ul>
+  </div>
+
+  <!-- Floating Action Button -->
+  <a href="post.html" class="fab">
+    <img src="./plus.png" alt="投稿">
+  </a>
+
+  <script>
+    // サンプル投稿データ（画像あり前提）
+    const dummyPosts = [
+      {
+        avatar: 'b.png',
+        name: 'Alice',
+        handle: '@alice',
+        time: '2m',
+        text: '〇〇スポットが最高でした！',
+        media: 'sea.png'
+      },
+      {
+        avatar: 'c.png',
+        name: 'Bob',
+        handle: '@bob',
+        time: '10m',
+        text: 'この乗り物すごくよかったです！',
+        media: 'atraction.png'
+      },
+      {
+        avatar: 'a.png',
+        name: 'Carol',
+        handle: '@carol',
+        time: '30m',
+        text: 'カフェでのひととき ☕️',
+        media: 'caffe.png'
+      }
+    ];
+
+    function render() {
+      const list = document.getElementById('postList');
+      dummyPosts.forEach(post => {
+        const li = document.createElement('li');
+        li.className = 'post-item';
+        li.innerHTML = `
+          <div class="avatar"><img src="${post.avatar}" alt="${post.name}"></div>
+          <div class="content">
+            <div class="meta"><strong>${post.name}</strong> ${post.handle} · ${post.time}</div>
+            <div class="text">${post.text}</div>
+            <div class="media"><img src="${post.media}" alt="投稿画像"></div>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>
