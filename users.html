@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参加者一覧</title>
+  <style>
+    /* モバイルファースト */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-size: 16px; /* ベースを16px以上に設定 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    .filter-btn {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+    .search-box {
+      flex: 1;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 44px 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .search-box button {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .list {
+      padding: 12px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card .avatar {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 12px;
+    }
+    .card .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card .info {
+      flex: 1;
+    }
+    .card .info .name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+    .card .info .company {
+      font-size: 14px;
+      color: #666;
+      margin: 4px 0 8px;
+    }
+    .card .info .desc {
+      font-size: 16px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .card .info .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      background-color: #e0f3ff;
+      color: #007bff;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 14px;
+    }
+    .card .action {
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .card .action button {
+      height: 36px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    @media (min-width: 600px) {
+      .header, .list { max-width: 600px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="search-box">
+      <input type="text" placeholder="ID、氏名、企業名、ハッシュタグで検索">
+      <button>🔍</button>
+    </div>
+  </div>
+  <div class="list">
+    <!-- サンプルカード -->
+    <div class="card">
+      <div class="avatar"><img src="a.png" alt="山田"></div>
+      <div class="info">
+        <p class="name">山田</p>
+        <p class="company">テスト株式会社</p>
+        <p class="desc">テスト株式会社の山田と申します。お気軽にチャットでお問い合わせください！</p>
+        <div class="tags">
+          <span class="tag">#開発</span>
+          <span class="tag">#関西</span>
+        </div>
+      </div>
+      <div class="action"><button>会話する</button></div>
+    </div>
+    <div class="card">
+      <div class="avatar"><img src="b.png" alt="参加者"></div>
+      <div class="info">
+        <p class="name">鈴木</p>
+        <p class="company">参加株式会社</p>
+        <p class="desc">参加株式会社で○○の営業をしています。よろしくお願いします。</p>
+        <div class="tags">
+          <span class="tag">#営業</span>
+          <span class="tag">#コーヒー</span>
+        </div>
+      </div>
+      <div class="action"><button>会話する</button></div>
+    </div>
+    <div class="card">
+        <div class="avatar"><img src="c.png" alt="参加者"></div>
+        <div class="info">
+          <p class="name">渡辺</p>
+          <p class="company">参加株式会社</p>
+          <p class="desc">参加株式会社で○○の営業をしています。よろしくお願いします。</p>
+          <div class="tags">
+            <span class="tag">#事務</span>
+            <span class="tag">#旅行</span>
+          </div>
+        </div>
+        <div class="action"><button>会話する</button></div>
+      </div>
+    <!-- 他のカードも同様に -->
+  </div>
+</body>
+</html>

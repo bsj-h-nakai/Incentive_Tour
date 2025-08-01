@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャット</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-size: 18px; /* フォントサイズを大きめに設定 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f0f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 14px;
+      border-bottom: 1px solid #ccc;
+    }
+    .back-btn {
+      width: 28px;
+      height: 28px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+    .header .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+    .header .avatar img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .header .name {
+      font-size: 20px; /* 名前を大きめに */
+      font-weight: bold;
+      flex: 1;
+    }
+    .messages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .date-sep {
+      text-align: center;
+      margin: 16px 0;
+    }
+    .date-sep span {
+      background-color: #ddd;
+      color: #333;
+      padding: 6px 14px;
+      border-radius: 14px;
+      font-size: 16px; /* 日付フォント */
+    }
+    .msg-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .msg-row.outgoing {
+      justify-content: flex-end;
+    }
+    .avatar-small {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+    .msg-row.outgoing .avatar-small {
+      order: 2;
+      margin-left: 10px;
+      margin-right: 0;
+    }
+    .avatar-small img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .bubble {
+      background-color: #fff;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 18px; /* メッセージフォント */
+      line-height: 1.5;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      max-width: 75%;
+    }
+    .msg-row.outgoing .bubble {
+      background-color: #dcf8c6;
+    }
+    .input-area {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
+    .btn-img {
+      width: 32px;
+      height: 32px;
+      background-color: #eee;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .btn-img img {
+      width: 22px;
+      height: 22px;
+    }
+    .input-area input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 18px;
+      font-size: 18px; /* 入力欄フォント */
+      margin-right: 10px;
+    }
+    .input-area .btn-send {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .btn-send img {
+      width: 26px;
+      height: 26px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="back.png" alt="戻る" class="back-btn" onclick="history.back()">
+    <div class="avatar"><img src="b.png" alt="参加者"></div>
+    <div class="name">鈴木</div>
+  </div>
+  <div class="messages" id="messages">
+    <div class="date-sep"><span>2025.08.04</span></div>
+    <div class="msg-row">
+      <div class="avatar-small"><img src="b.png" alt="参加者"></div>
+      <div class="bubble">こんにちは！</div>
+    </div>
+  </div>
+  <div class="input-area">
+    <input type="text" id="inputMsg" placeholder="メッセージを入力">
+    <div class="btn-send" onclick="sendMessage()"><img src="send.png" alt="送信"></div>
+  </div>
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('inputMsg');
+      const text = input.value.trim();
+      if (!text) return;
+      const messages = document.getElementById('messages');
+      const row = document.createElement('div'); row.className = 'msg-row outgoing';
+      const bubble = document.createElement('div'); bubble.className = 'bubble'; bubble.textContent = text;
+      const avatar = document.createElement('div'); avatar.className = 'avatar-small';
+      const img = document.createElement('img'); img.src = 'a.png'; img.alt='Me';
+      avatar.appendChild(img);
+      row.appendChild(bubble);
+      row.appendChild(avatar);
+      messages.appendChild(row);
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+</body>
+</html>
